@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Training Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Training Dashboard</h1>
+      <p class="subtitle">Training volume, pace and shoe mileage</p>
+    </div>
+    <label class="month-picker">
+      <span>Month</span>
+      <select id="month-select" aria-label="Select month"></select>
+    </label>
+  </header>
+
+  <main id="app">
+    <div id="status" class="status" role="status">Loading dashboard&hellip;</div>
+
+    <section class="kpis" id="kpis" hidden>
+      <article class="card kpi">
+        <span class="kpi-label">Month distance</span>
+        <strong id="kpi-distance">&mdash;</strong>
+        <span class="kpi-unit">km</span>
+      </article>
+      <article class="card kpi">
+        <span class="kpi-label">Total distance</span>
+        <strong id="kpi-total-distance">&mdash;</strong>
+        <span class="kpi-unit">km</span>
+      </article>
+      <article class="card kpi">
+        <span class="kpi-label">Average pace</span>
+        <strong id="kpi-pace">&mdash;</strong>
+        <span class="kpi-unit">min/km</span>
+      </article>
+      <article class="card kpi">
+        <span class="kpi-label">Workouts</span>
+        <strong id="kpi-workouts">&mdash;</strong>
+        <span class="kpi-unit">sessions</span>
+      </article>
+    </section>
+
+    <section class="chart-grid" id="charts" hidden>
+      <article class="card chart-card">
+        <h2>Distance (km)</h2>
+        <div id="chart-distance" class="chart"></div>
+      </article>
+      <article class="card chart-card">
+        <h2>Time</h2>
+        <div id="chart-time" class="chart"></div>
+      </article>
+      <article class="card chart-card">
+        <h2>Month time</h2>
+        <div id="chart-month-time" class="chart"></div>
+      </article>
+      <article class="card chart-card">
+        <h2>Pace (min/km)</h2>
+        <div id="chart-pace" class="chart"></div>
+      </article>
+    </section>
+
+    <section class="card shoes-card" id="shoes-section" hidden>
+      <div class="section-head">
+        <h2>Shoes</h2>
+        <span class="muted">Planned vs actual mileage</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Shoe</th>
+              <th>Intended use</th>
+              <th>Start</th>
+              <th>End</th>
+              <th>Planned</th>
+              <th>Actual</th>
+              <th>Remaining</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="shoes-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span id="updated">&mdash;</span>
+    <span>Data source: Google Sheets</span>
+  </footer>
+</body>
+</html>
