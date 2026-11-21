@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Training Dashboard</title>
+  <link rel="stylesheet" href="style.css?v=cc14d2a0df">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+  <script src="palette.js?v=d9c1d54003" defer></script>
+  <script src="app.js?v=367081bebe" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-title">
+      <h1>Training Dashboard</h1>
+      <p class="subtitle">Training volume, pace and shoe mileage</p>
+    </div>
+    <div class="topbar-actions">
+      <nav class="nav">
+        <a href="index.html" aria-current="page">Dashboard</a>
+        <a href="calendar.html">Calendar</a>
+      </nav>
+      <label class="month-picker">
+        <span>Month</span>
+        <select id="month-select" aria-label="Select month"></select>
+      </label>
+    </div>
+  </header>
+
+  <main id="app">
+    <div id="status" class="status" role="status">Loading dashboard&hellip;</div>
+
+    <p class="alltime" id="alltime" hidden>
+      <span class="alltime-label">All time</span>
+      <span class="alltime-values">
+        <span class="alltime-item"><strong id="alltime-distance">&mdash;</strong> km</span>
+        <span class="alltime-dot" aria-hidden="true">&middot;</span>
+        <span class="alltime-item"><strong id="alltime-time">&mdash;</strong></span>
+        <span class="alltime-dot" aria-hidden="true">&middot;</span>
+        <span class="alltime-item"><strong id="alltime-workouts">&mdash;</strong> workouts</span>
+        <span class="alltime-dot" aria-hidden="true">&middot;</span>
+        <span class="alltime-item alltime-since">since <span id="alltime-since">&mdash;</span></span>
+      </span>
+    </p>
+
+    <section class="kpis" id="kpis" hidden>
+      <article class="card kpi">
+        <span class="kpi-label">Distance</span>
+        <strong id="kpi-distance">&mdash;</strong>
+        <span class="kpi-unit">km</span>
+      </article>
+      <article class="card kpi">
+        <span class="kpi-label">Time</span>
+        <strong id="kpi-time">&mdash;</strong>
+        <span class="kpi-unit">&nbsp;</span>
+      </article>
+      <article class="card kpi">
+        <span class="kpi-label">Pace</span>
+        <strong id="kpi-pace">&mdash;</strong>
+        <span class="kpi-unit">min/km &middot; runs</span>
+      </article>
+      <article class="card kpi">
+        <span class="kpi-label">Workouts</span>
+        <strong id="kpi-workouts">&mdash;</strong>
+        <span class="kpi-unit">&nbsp;</span>
+      </article>
+    </section>
+
+    <section class="chart-grid" id="charts" hidden>
+      <article class="card chart-card">
+        <h2>Distance (km)</h2>
+        <div id="chart-distance" class="chart"></div>
+      </article>
+      <article class="card chart-card">
+        <h2>Time</h2>
+        <div id="chart-time" class="chart"></div>
+      </article>
+      <article class="card chart-card">
+        <h2>Month time</h2>
+        <div id="chart-month-time" class="chart"></div>
+      </article>
+      <article class="card chart-card">
+        <h2>Pace (min/km)</h2>
+        <div id="chart-pace" class="chart"></div>
+      </article>
+    </section>
+
+    <section class="card shoes-card" id="shoes-section" hidden>
+      <div class="section-head">
+        <h2>Shoes</h2>
+        <span class="muted">Planned vs actual mileage</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Shoe</th>
+              <th>Intended use</th>
+              <th>Start</th>
+              <th>End</th>
+              <th>Planned</th>
+              <th>Actual</th>
+              <th>Remaining</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="shoes-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span id="updated">&mdash;</span>
+    <span>Data source: Google Sheets</span>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calendar — Training Dashboard</title>
+  <link rel="stylesheet" href="style.css?v=cc14d2a0df">
+  <script src="palette.js?v=d9c1d54003" defer></script>
+  <script src="calendar.js?v=70c343dbb5" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-title">
+      <h1>Training Calendar</h1>
+      <p class="subtitle">Every training day, by type and duration</p>
+    </div>
+    <div class="topbar-actions">
+      <nav class="nav">
+        <a href="index.html">Dashboard</a>
+        <a href="calendar.html" aria-current="page">Calendar</a>
+      </nav>
+      <label class="month-picker is-static" title="The month filter applies to the dashboard">
+        <span>Month</span>
+        <select id="month-select" aria-label="Month (dashboard only)" disabled>
+          <option selected>&mdash;</option>
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <main id="app">
+    <div id="status" class="status" role="status">Loading calendar&hellip;</div>
+
+    <section class="card calendar-card" id="calendar" hidden>
+      <div class="calendar-head">
+        <p class="calendar-range" id="cal-range"></p>
+        <div class="calendar-controls">
+          <div class="cal-tabs" id="cal-tabs" role="group" aria-label="Time range"></div>
+          <span class="cal-divider" aria-hidden="true"></span>
+          <div class="cal-tabs" id="cal-modes" role="group" aria-label="Colour by"></div>
+        </div>
+      </div>
+
+      <div class="cal-scroll">
+        <div class="cal-body">
+          <div class="cal-weekdays" aria-hidden="true">
+            <span>Mon</span>
+            <span></span>
+            <span>Wed</span>
+            <span></span>
+            <span>Fri</span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="cal-weeks">
+            <div class="cal-months" id="cal-months" aria-hidden="true"></div>
+            <div class="cal-grid" id="cal-grid"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cal-legend">
+        <div class="legend-group" id="legend-types"></div>
+        <div class="legend-group" id="legend-levels"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span id="updated">&mdash;</span>
+    <span>Data source: Google Sheets</span>
+  </footer>
+</body>
+</html>
